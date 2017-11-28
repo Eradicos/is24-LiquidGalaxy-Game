@@ -7,18 +7,11 @@ public class Spawn : NetworkBehaviour {
 
     public GameObject spawn;
     // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    
 
     public override void OnStartServer()
     {
-        GameObject obj = (GameObject)Instantiate(spawn, transform.position, transform.rotation);
+        GameObject obj = (GameObject)Instantiate(spawn, new Vector3(14f, 3f, 105f), transform.rotation);
         NetworkServer.Spawn(obj);
     }
 }

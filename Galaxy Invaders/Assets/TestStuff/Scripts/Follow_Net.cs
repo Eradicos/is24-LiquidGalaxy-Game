@@ -38,9 +38,9 @@ public class Follow_Net : NetworkBehaviour
         transform.position = startPosition.transform.position;
         transform.rotation = startPosition.transform.rotation;
         //offset = new Vector3((transform.position.x - target.transform.position.x), (transform.position.y - target.transform.position.y), (transform.position.z - target.transform.position.z));
-
-        this.transform.SetParent(target.transform);
         mainCamera = Camera.main.transform;
+        //this.transform.SetParent(target.transform);
+       
 
     }
 
@@ -49,11 +49,20 @@ public class Follow_Net : NetworkBehaviour
     {
         //transform.position = new Vector3(target.transform.position.x, target.transform.position.y, target.transform.position.z) + offset;
         //transform.rotation = target.transform.rotation;
-        //if (!parented) {
-        //    target = GameObject.Find("PlayerController(Clone)");
-        //    this.transform.SetParent(target.transform);
+        if (!parented)
+        {
+            try {
+                target = GameObject.Find("PlayerController");
+                this.transform.SetParent(target.transform);
 
-        //    parented = true;
+                parented = true;
+            }
+            catch (System.NullReferenceException) {
+                Debug.Log("no playercontroller");
+            }
+           
+        }
+
         if (movable) {
             Debug.Log(mainCamera.position);
 
@@ -63,8 +72,6 @@ public class Follow_Net : NetworkBehaviour
             transform.Rotate(0, x, 0);
             transform.Translate(0, 0, z);
         }
-       
-        //}
 
         moveCamera();
     }
