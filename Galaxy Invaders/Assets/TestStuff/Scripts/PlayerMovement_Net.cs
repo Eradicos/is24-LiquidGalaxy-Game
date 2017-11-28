@@ -44,18 +44,25 @@ public class PlayerMovement_Net : NetworkBehaviour
 
         if (controllDevice == ControllDevice.Bezier)
         {
-            if (time >= 1)
-            {
-                time = 0;
-            }
-            else
-            {
-                position = bezier.GetPointAt(time);
-                
-                transform.LookAt(position);
-                transform.position = position;
-                time += Time.deltaTime * move; 
-            }
+            if (!isServer) return;
+
+            CmdMovePLayerBezier();
+        }
+    }
+
+    [Command]
+    void CmdMovePLayerBezier() {
+        if (time >= 1)
+        {
+            time = 0;
+        }
+        else
+        {
+            position = bezier.GetPointAt(time);
+
+            transform.LookAt(position);
+            transform.position = position;
+            time += Time.deltaTime * curveMovement;
         }
     }
 

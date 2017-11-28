@@ -38,8 +38,8 @@ public class CustomNetworkManager : NetworkManager {
             StartClient();
         }
        
-            GameObject obj = (GameObject)Instantiate(spawn, transform.position, transform.rotation);
-            NetworkServer.Spawn(obj);
+            //GameObject obj = (GameObject)Instantiate(spawn, transform.position, transform.rotation);
+            //NetworkServer.Spawn(obj);
      
 
     }

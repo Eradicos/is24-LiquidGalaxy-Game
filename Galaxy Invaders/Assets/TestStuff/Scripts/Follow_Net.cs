@@ -7,7 +7,8 @@ public class Follow_Net : NetworkBehaviour
 {
 
     private GameObject target;
-    public GameObject startPosition;
+    private GameObject startPosition;
+    public bool movable;
     private Vector3 offset;
     bool parented = false;
     Transform mainCamera;
@@ -32,13 +33,13 @@ public class Follow_Net : NetworkBehaviour
             startPosition = GameObject.Find("host");
         }
 
-        //target = GameObject.Find("PlayerController");
+        target = GameObject.Find("PlayerController");
 
         transform.position = startPosition.transform.position;
         transform.rotation = startPosition.transform.rotation;
         //offset = new Vector3((transform.position.x - target.transform.position.x), (transform.position.y - target.transform.position.y), (transform.position.z - target.transform.position.z));
 
-        //this.transform.SetParent(target.transform);
+        this.transform.SetParent(target.transform);
         mainCamera = Camera.main.transform;
 
     }
@@ -53,13 +54,16 @@ public class Follow_Net : NetworkBehaviour
         //    this.transform.SetParent(target.transform);
 
         //    parented = true;
-        Debug.Log(mainCamera.position);
+        if (movable) {
+            Debug.Log(mainCamera.position);
 
-        float x = Input.GetAxis("Horizontal") * Time.deltaTime * 200.0f;
-        float z = Input.GetAxis("Vertical") * Time.deltaTime * 3.0f;
+            float x = Input.GetAxis("Horizontal") * Time.deltaTime * 200.0f;
+            float z = Input.GetAxis("Vertical") * Time.deltaTime * 3.0f;
 
-        transform.Rotate(0, x, 0);
-        transform.Translate(0, 0, z);
+            transform.Rotate(0, x, 0);
+            transform.Translate(0, 0, z);
+        }
+       
         //}
 
         moveCamera();
