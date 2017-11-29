@@ -33,7 +33,7 @@ public class Follow_Net : NetworkBehaviour
             startPosition = GameObject.Find("host");
         }
 
-        target = GameObject.Find("PlayerController");
+        target = GameObject.Find("Ship");
 
         transform.position = startPosition.transform.position;
         transform.rotation = startPosition.transform.rotation;
@@ -52,7 +52,7 @@ public class Follow_Net : NetworkBehaviour
         if (!parented)
         {
             try {
-                target = GameObject.Find("PlayerController");
+                target = GameObject.Find("Ship");
                 this.transform.SetParent(target.transform);
 
                 parented = true;
