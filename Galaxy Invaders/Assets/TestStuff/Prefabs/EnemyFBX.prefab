@@ -38,9 +38,9 @@ GameObject:
   - component: {fileID: 4056943575898944}
   - component: {fileID: 54678920969271874}
   - component: {fileID: 65794015268636714}
-  - component: {fileID: 114106807697297586}
   - component: {fileID: 114822112983522892}
   - component: {fileID: 114665721613701800}
+  - component: {fileID: 114557565915950186}
   m_Layer: 0
   m_Name: EnemyFBX
   m_TagString: Untagged
@@ -287,7 +287,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114106807697297586
+--- !u!114 &114557565915950186
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -300,7 +300,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   range: 20
   speed: 10
-  target: {fileID: 1726878171397088, guid: 206a21b2e218db0419627491198b3bfd, type: 2}
 --- !u!114 &114665721613701800
 MonoBehaviour:
   m_ObjectHideFlags: 1
