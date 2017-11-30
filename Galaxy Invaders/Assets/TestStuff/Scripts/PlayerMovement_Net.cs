@@ -12,7 +12,11 @@ public class PlayerMovement_Net : NetworkBehaviour
     public float curveMovement = 0.001f;
     private float move = 0.001f;
     float time = 0.0005f;
-    private Vector3 position;
+    [SyncVar]
+    public Vector3 position;
+
+    [SyncVar]
+    public float x, y, z;
     
 
     public enum ControllDevice {
@@ -59,6 +63,10 @@ public class PlayerMovement_Net : NetworkBehaviour
         else
         {
             position = bezier.GetPointAt(time);
+
+            x = transform.eulerAngles.x;
+            y = transform.eulerAngles.y;
+            z = transform.eulerAngles.z;
 
             transform.LookAt(position);
             transform.position = position;
