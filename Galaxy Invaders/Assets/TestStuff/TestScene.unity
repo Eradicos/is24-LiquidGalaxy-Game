@@ -208,8 +208,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 36031192}
-  - component: {fileID: 36031194}
   - component: {fileID: 36031193}
+  - component: {fileID: 36031194}
   m_Layer: 0
   m_Name: Spawn
   m_TagString: Untagged
@@ -224,7 +224,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 36031191}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.18, y: 0, z: 0}
+  m_LocalPosition: {x: 12.2, y: 0, z: 92.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

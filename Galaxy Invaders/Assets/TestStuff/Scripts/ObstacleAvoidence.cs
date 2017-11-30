@@ -8,12 +8,13 @@ public class ObstacleAvoidence : MonoBehaviour {
     public float speed;
     private bool isThereAnyThing = false;
     // Specify the target for the enemy.
-    public GameObject target;
+    private GameObject target;
     private float rotationSpeed;
     private RaycastHit hit;
     // Use this for initialization
     void Start()
     {
+        target = GameObject.Find("PlayerController");
         rotationSpeed = 50;
     }
     // Update is called once per frame
