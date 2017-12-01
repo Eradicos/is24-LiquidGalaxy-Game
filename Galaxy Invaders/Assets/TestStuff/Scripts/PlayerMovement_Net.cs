@@ -34,15 +34,15 @@ public class PlayerMovement_Net : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKey("escape")) {
+            RpcQuit();
+        }
+
         if (controllDevice == ControllDevice.Keyboard)
         {
-            float x = Input.GetAxis("Horizontal") * Time.deltaTime * 200.0f;
-            float z = Input.GetAxis("Vertical") * Time.deltaTime * 3.0f;
+            if (!isServer) return;
 
-            Debug.Log("Horizontal: " + Input.GetAxis("Horizontal") + "Vertical: " + Input.GetAxis("Vertical"));
-
-            transform.Rotate(0, x, 0);
-            transform.Translate(0, 0, z);
+            CmdMovePLayerKeyboard();
         }
         
 
@@ -52,6 +52,29 @@ public class PlayerMovement_Net : NetworkBehaviour
 
             CmdMovePLayerBezier();
         }
+    }
+
+    [ClientRpc]
+    void RpcQuit()
+    {
+        Debug.Log("QUIT");
+        Application.Quit();
+    }
+
+    [Command]
+    void CmdMovePLayerKeyboard()
+    {
+        float x = Input.GetAxis("Horizontal") * Time.deltaTime * 200.0f;
+        float z = Input.GetAxis("Vertical") * Time.deltaTime * 3.0f;
+
+        transform.Rotate(0, x, 0);
+        transform.Translate(0, 0, z);
+
+        position = transform.position;
+
+        x = transform.eulerAngles.x;
+        y = transform.eulerAngles.y;
+        z = transform.eulerAngles.z;
     }
 
     [Command]
