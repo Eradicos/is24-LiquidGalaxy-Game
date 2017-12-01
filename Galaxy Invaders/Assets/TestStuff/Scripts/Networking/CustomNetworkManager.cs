@@ -22,7 +22,15 @@ public class CustomNetworkManager : NetworkManager {
                 else if (arguments[1] == "client")
                 {
 
-                    StartClient();
+                    try {
+                        networkAddress = arguments[3];
+                        StartClient();
+                    }
+                    catch (System.IndexOutOfRangeException e) {
+                        StartClient();
+                    }
+
+                    
                 }
             }
             catch (System.IndexOutOfRangeException e)
