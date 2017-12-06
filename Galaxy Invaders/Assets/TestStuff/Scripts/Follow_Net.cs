@@ -30,7 +30,7 @@ public class Follow_Net : NetworkBehaviour
         }
         catch (System.IndexOutOfRangeException e)
         {
-            startPosition = GameObject.Find("host");
+            startPosition = GameObject.Find("client1");
         }
 
         target = GameObject.Find("Ship");
@@ -39,8 +39,8 @@ public class Follow_Net : NetworkBehaviour
         transform.rotation = startPosition.transform.rotation;
         //offset = new Vector3((transform.position.x - target.transform.position.x), (transform.position.y - target.transform.position.y), (transform.position.z - target.transform.position.z));
         mainCamera = Camera.main.transform;
-        //this.transform.SetParent(target.transform);
-       
+        this.transform.SetParent(target.transform);
+
 
     }
 

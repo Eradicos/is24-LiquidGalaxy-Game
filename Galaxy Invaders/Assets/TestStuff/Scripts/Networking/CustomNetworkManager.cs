@@ -9,8 +9,6 @@ public class CustomNetworkManager : NetworkManager {
     public bool TestRun;
     // Use this for initialization
     void Start() {
-       
-       
         if (!TestRun)
         {
             try
@@ -24,7 +22,15 @@ public class CustomNetworkManager : NetworkManager {
                 else if (arguments[1] == "client")
                 {
 
-                    StartClient();
+                    try {
+                        networkAddress = arguments[3];
+                        StartClient();
+                    }
+                    catch (System.IndexOutOfRangeException e) {
+                        StartClient();
+                    }
+
+                    
                 }
             }
             catch (System.IndexOutOfRangeException e)
@@ -37,15 +43,5 @@ public class CustomNetworkManager : NetworkManager {
         {
             StartClient();
         }
-
-        //GameObject obj = (GameObject)Instantiate(spawn, transform.position, transform.rotation);
-        //NetworkServer.Spawn(obj);
-        
-
     }
-
-    // Update is called once per frame
-    void Update () {
-		
-	}
 }
