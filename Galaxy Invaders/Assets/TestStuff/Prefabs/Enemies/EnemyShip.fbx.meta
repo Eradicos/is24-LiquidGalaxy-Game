@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: e4f2ff9612001f7469306e8dd991e0bc
-timeCreated: 1510933095
+guid: 39f71211511e8a54296b19fcbf9294a2
+timeCreated: 1512124263
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -9,19 +9,21 @@ ModelImporter:
     100002: pPrism1
     100004: pPrism2
     100006: pPrism3
+    100008: pPrism4
+    100010: transform1
+    100012: transform2
+    100014: transform3
     400000: //RootNode
     400002: pPrism1
     400004: pPrism2
     400006: pPrism3
-    2300000: pPrism1
-    2300002: pPrism2
-    2300004: pPrism3
-    3300000: pPrism1
-    3300002: pPrism2
-    3300004: pPrism3
-    4300000: pPrism1
-    4300002: pPrism2
-    4300004: pPrism3
+    400008: pPrism4
+    400010: transform1
+    400012: transform2
+    400014: transform3
+    2300000: pPrism4
+    3300000: pPrism4
+    4300000: pPrism4
   externalObjects:
   - first:
       type: UnityEngine:Material
