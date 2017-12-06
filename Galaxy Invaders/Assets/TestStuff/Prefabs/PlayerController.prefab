@@ -804,6 +804,10 @@ MonoBehaviour:
   controllDevice: 0
   bezier: {fileID: 0}
   curveMovement: 0.01
+  position: {x: 0, y: 0, z: 0}
+  x: 0
+  y: 0
+  z: 0
   HorizonLock: 1
 --- !u!114 &114916610347923446
 MonoBehaviour:
