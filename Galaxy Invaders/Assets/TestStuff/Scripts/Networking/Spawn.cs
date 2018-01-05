@@ -8,15 +8,14 @@ public class Spawn : NetworkBehaviour {
     public GameObject spawn;
     public float startTime;
     public float spawntime;
-    //public float lifeTime;
-    //public float waitForRespawn;
-    //private int counter;
-    //public static GameObject[] allShips = new GameObject[10];
-
-    // Use this for initialization
+    public float lifeTime;
+    private GameObject obj;
+    public static GameObject[] allShips = new GameObject[10];
 
 
-    public override void OnStartServer()
+
+
+    private void OnEnable()
     {
 
             InvokeRepeating("SpawnEnemy", startTime, spawntime);
@@ -24,25 +23,24 @@ public class Spawn : NetworkBehaviour {
       
     }
 
+    private void OnDisable()
+    {
+        print("Script Offline");
+        CancelInvoke();
+
+    }
+
+    private void Update()
+    {
+            Destroy(obj, lifeTime);
+    
+    }
+
     void SpawnEnemy()
     {
-       ////if (counter < 5)
-       //// {
-       ////     for (int i = 0; i < 10; i++)
-       ////     {
-
-                GameObject obj = (GameObject)Instantiate(spawn, transform.position, transform.rotation);
-                NetworkServer.Spawn(obj);
-                //allShips[i] = obj;
-
-            }
-            //Destroy(allShips[counter], lifeTime);
-            //counter++;
-          
-    //    }else
-    //    {
-    //        new WaitForSeconds(waitForRespawn);
-    //        counter = 0;
-    //    }
-    //}
+        
+            obj = (GameObject)Instantiate(spawn, transform.position, transform.rotation);
+            NetworkServer.Spawn(obj);
+      
+    }
 }

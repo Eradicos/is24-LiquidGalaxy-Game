@@ -10,13 +10,20 @@ public class ObstacleAvoidence : MonoBehaviour {
     // Specify the target for the enemy.
     private GameObject target;
     private float rotationSpeed;
-    private RaycastHit hit;
+    private RaycastHit hitR, hitL;
+    private Vector3 RotationL;
+
+    
+
     // Use this for initialization
     void Start()
     {
+      
         target = GameObject.Find("PlayerController");
-        rotationSpeed = 50;
-    }
+        rotationSpeed = 30;
+        print("Target: " + target.name);
+        RotationL = Vector3.up * Time.deltaTime * rotationSpeed;
+}
     // Update is called once per frame
     void Update()
     {
@@ -34,21 +41,38 @@ public class ObstacleAvoidence : MonoBehaviour {
         // Two rays left and right to the object to detect the obstacle.
         Transform leftRay = transform;
         Transform rightRay = transform;
+
+
+
         //Use Phyics.RayCast to detect the obstacle
-        if (Physics.Raycast(leftRay.position + (transform.right * 7), transform.forward, out hit, range) || Physics.Raycast(rightRay.position - (transform.right * 7), transform.forward, out hit, range))
+
+        if (Physics.Raycast(leftRay.position + (transform.right * 7), transform.forward, out hitL, range))
         {
-            if (hit.collider.gameObject)
+            if (hitL.collider.gameObject.CompareTag(Tags.Obstacle))
             {
+
                 isThereAnyThing = true;
-                transform.Rotate(Vector3.up * Time.deltaTime * rotationSpeed);
+                transform.Rotate(Vector3.up * Time.deltaTime * -rotationSpeed);
+
             }
         }
+        if (Physics.Raycast(rightRay.position - (transform.right * 7), transform.forward, out hitR, range))
+        {
+            if (hitR.collider.gameObject.CompareTag(Tags.Obstacle))
+            {
+
+                isThereAnyThing = true;
+                transform.Rotate(Vector3.up * Time.deltaTime * rotationSpeed);
+      
+            }
+        }
+
         // Now Two More RayCast At The End of Object to detect that object has already pass the obsatacle.
         // Just making this boolean variable false it means there is nothing in front of object.
-        if (Physics.Raycast(transform.position - (transform.forward * 4), transform.right, out hit, 10) ||
-         Physics.Raycast(transform.position - (transform.forward * 4), -transform.right, out hit, 10))
+        if (Physics.Raycast(transform.position - (transform.forward * 4), transform.right, out hitL, 10) ||
+         Physics.Raycast(transform.position - (transform.forward * 4), -transform.right, out hitL, 10))
         {
-            if (hit.collider.gameObject)
+            if (hitL.collider.gameObject.CompareTag(Tags.Obstacle))
             {
                 isThereAnyThing = false;
             }
